@@ -7,7 +7,7 @@ namespace Lessonapi.Data
     public class Category
     {
         [Key]
-        public int Id { get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
         [MaxLength(100)]

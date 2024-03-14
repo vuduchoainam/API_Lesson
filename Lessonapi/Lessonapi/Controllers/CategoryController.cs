@@ -25,7 +25,7 @@ namespace Lessonapi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var category = _context.categories.SingleOrDefault(c => c.Id == id);
+            var category = _context.categories.SingleOrDefault(c => c.CategoryId == id);
             if(category != null)
             {
                 return Ok(category);
@@ -55,7 +55,7 @@ namespace Lessonapi.Controllers
         [HttpPut("{id}")]
         public IActionResult Edit(int id, CategoryModel model)
         {
-            var category = _context.categories.SingleOrDefault(c => c.Id == id);
+            var category = _context.categories.SingleOrDefault(c => c.CategoryId == id);
             if (category != null)
             {
                 category.Name = model.Name;
@@ -68,7 +68,7 @@ namespace Lessonapi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var category = _context.categories.SingleOrDefault(c => c.Id == id);
+            var category = _context.categories.SingleOrDefault(c => c.CategoryId == id);
             if (category != null)
             {
                 _context.Remove(category);

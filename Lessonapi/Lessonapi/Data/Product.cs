@@ -8,7 +8,7 @@ namespace Lessonapi.Data
     public class Product
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid ProductId { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -22,5 +22,13 @@ namespace Lessonapi.Data
         public int? CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+
+
+
+        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public Product()
+        {
+            OrderDetails = new HashSet<OrderDetail>();
+        }
     }
 }

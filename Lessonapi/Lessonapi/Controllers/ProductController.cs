@@ -21,7 +21,7 @@ namespace Lessonapi.Controllers
         {
             try
             {
-                var product = products.FirstOrDefault(p => p.Id == Guid.Parse(id));
+                var product = products.FirstOrDefault(p => p.ProductId == Guid.Parse(id));
                 if (product == null)
                 {
                     return NotFound();
@@ -40,7 +40,7 @@ namespace Lessonapi.Controllers
         {
             var product = new Product
             {
-                Id = Guid.NewGuid(),
+                ProductId = Guid.NewGuid(),
                 Name = productVM.Name,
                 Price = productVM.Price,
             };
@@ -56,12 +56,12 @@ namespace Lessonapi.Controllers
         {
             try
             {
-                var product = products.FirstOrDefault(p => p.Id == Guid.Parse(id));
+                var product = products.FirstOrDefault(p => p.ProductId == Guid.Parse(id));
                 if (product == null)
                 {
                     return NotFound();
                 }
-                if (id != product.Id.ToString() )
+                if (id != product.ProductId.ToString() )
                 {
                     return BadRequest();
                 }    
@@ -82,12 +82,12 @@ namespace Lessonapi.Controllers
         {
             try
             {
-                var product = products.FirstOrDefault(p => p.Id == Guid.Parse(id));
+                var product = products.FirstOrDefault(p => p.ProductId == Guid.Parse(id));
                 if (product == null)
                 {
                     return NotFound();
                 }
-                if (id != product.Id.ToString())
+                if (id != product.ProductId.ToString())
                 {
                     return BadRequest();
                 }
