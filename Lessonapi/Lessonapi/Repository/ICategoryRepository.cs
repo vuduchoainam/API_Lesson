@@ -1,6 +1,6 @@
 ﻿using Lessonapi.Models;
 
-namespace Lessonapi.Services
+namespace Lessonapi.Repository
 {
     public interface ICategoryRepository
     {

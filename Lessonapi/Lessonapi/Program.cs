@@ -1,4 +1,5 @@
 using Lessonapi.Data;
+using Lessonapi.Repository;
 using Lessonapi.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
@@ -11,7 +12,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+
 //builder.Services.AddScoped<ICategoryRepository, CategoryRepositoryInMemory>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

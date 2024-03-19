@@ -1,13 +1,13 @@
 ﻿using Lessonapi.Data;
 using Lessonapi.Models;
 
-namespace Lessonapi.Services
+namespace Lessonapi.Repository
 {
     public class CategoryRepository : ICategoryRepository
     {
         private readonly ApplicationDbContext _context;
-        public CategoryRepository(ApplicationDbContext context) 
-        { 
+        public CategoryRepository(ApplicationDbContext context)
+        {
             _context = context;
         }
         public CategoryVM Add(CategoryModel category)
@@ -28,7 +28,7 @@ namespace Lessonapi.Services
         public void Delete(int id)
         {
             var category = _context.categories.SingleOrDefault(c => c.CategoryId == id);
-            if(category != null)
+            if (category != null)
             {
                 _context.Remove(category);
                 _context.SaveChanges();
@@ -68,11 +68,11 @@ namespace Lessonapi.Services
         public CategoryVM GetById(int id)
         {
             var category = _context.categories.SingleOrDefault(c => c.CategoryId == id);
-            if(category != null)
+            if (category != null)
             {
-                return new CategoryVM 
-                { 
-                    CategoryId = category.CategoryId ,
+                return new CategoryVM
+                {
+                    CategoryId = category.CategoryId,
                     Name = category.Name,
                 };
             }

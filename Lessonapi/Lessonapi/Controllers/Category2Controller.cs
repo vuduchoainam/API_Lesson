@@ -1,5 +1,6 @@
 ﻿using Lessonapi.Data;
 using Lessonapi.Models;
+using Lessonapi.Repository;
 using Lessonapi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,11 +10,11 @@ namespace Lessonapi.Controllers
     [ApiController]
     public class Category2Controller : Controller
     {
-        private ICategoryRepository _categoryRepository;
+        private readonly ICategoryService _categoryService;
 
-        public Category2Controller(ICategoryRepository categoryRepository) 
+        public Category2Controller(ICategoryService categoryService)
         {
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryService;
         }
 
         [HttpGet]
@@ -21,7 +22,7 @@ namespace Lessonapi.Controllers
         {
             try
             {
-                var lstCategory = _categoryRepository.GetAll();
+                var lstCategory = _categoryService.GetAll();
                 return Ok(lstCategory);
             }
             catch
@@ -35,7 +36,7 @@ namespace Lessonapi.Controllers
         {
             try
             {
-                var data = _categoryRepository.GetById(id);
+                var data = _categoryService.GetById(id);
                 if(data != null)
                 {
                     return Ok(data);
@@ -52,7 +53,7 @@ namespace Lessonapi.Controllers
         {
             try
             {
-                _categoryRepository.Edit(id, model);
+                _categoryService.Edit(id, model);
                 return NoContent();
             }
             catch (Exception ex)
@@ -69,7 +70,7 @@ namespace Lessonapi.Controllers
         {
             try
             {
-                _categoryRepository.Delete(id);
+                _categoryService.Delete(id);
                 return Ok();
             }
             catch
@@ -83,7 +84,7 @@ namespace Lessonapi.Controllers
         {
             try
             {
-                _categoryRepository.Add(model);
+                _categoryService.Add(model);
                 return Ok(model);
             }
             catch

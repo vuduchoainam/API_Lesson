@@ -1,6 +1,6 @@
 ﻿using Lessonapi.Models;
 
-namespace Lessonapi.Services
+namespace Lessonapi.Repository
 {
     public class CategoryRepositoryInMemory : ICategoryRepository
     {
@@ -21,7 +21,7 @@ namespace Lessonapi.Services
             categoryVMs.Add(_categoryVM);
             return _categoryVM;
         }
-        
+
 
         public void Delete(int id)
         {
@@ -32,10 +32,10 @@ namespace Lessonapi.Services
         public void Edit(int id, CategoryModel model)
         {
             var _categoryVM = categoryVMs.SingleOrDefault(c => c.CategoryId == id);
-            if(_categoryVM == null)
+            if (_categoryVM == null)
             {
                 _categoryVM.Name = model.Name;
-            }    
+            }
         }
 
         public List<CategoryVM> GetAll()
